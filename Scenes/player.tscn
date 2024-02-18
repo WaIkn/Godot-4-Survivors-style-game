@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://3suho3whovo4"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_mkiod"]
+[ext_resource type="Texture2D" uid="uid://b13wok5ky3gm" path="res://PlayerSprite.png" id="2_s63ws"]
+[ext_resource type="Script" path="res://Scenes/PlayerSprite.gd" id="3_6vbpv"]
+[ext_resource type="PackedScene" uid="uid://b5lsi63pghug5" path="res://Scenes/health.tscn" id="3_kptju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3njht"]
+size = Vector2(18, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwjbv"]
+size = Vector2(18, 32)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_mkiod")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_s63ws")
+script = ExtResource("3_6vbpv")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3njht")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="ProjectileSpawnPoint" type="Marker2D" parent="Pivot"]
+unique_name_in_owner = true
+position = Vector2(16, 0)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_kwjbv")
+debug_color = Color(1, 0.196078, 0.145098, 0.462745)
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackResetTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Health" parent="." instance=ExtResource("3_kptju")]
+offset_top = -37.0
+offset_bottom = -33.0
+
+[connection signal="timeout" from="Timers/AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]

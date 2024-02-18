@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://o7ij22ogxdi8"]
+
+[ext_resource type="PackedScene" uid="uid://3suho3whovo4" path="res://Scenes/player.tscn" id="1_bbule"]
+[ext_resource type="PackedScene" uid="uid://buyricavq83bg" path="res://Scenes/enemy.tscn" id="2_kpn8q"]
+[ext_resource type="Texture2D" uid="uid://bihm1rhtsov11" path="res://TestGridTexture.jpg" id="3_lp0rv"]
+
+[node name="Level" type="Node"]
+
+[node name="TestGridTexture" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(378, 188)
+scale = Vector2(5, 5)
+texture = ExtResource("3_lp0rv")
+
+[node name="Player" parent="." instance=ExtResource("1_bbule")]
+position = Vector2(547, 358)
+platform_floor_layers = 0
+
+[node name="MainCamera" type="Camera2D" parent="Player"]
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_screen = false
+
+[node name="Enemy" parent="." instance=ExtResource("2_kpn8q")]
+position = Vector2(978, 152)
+scale = Vector2(0.936844, 1)
+platform_floor_layers = 0
+
+[node name="Enemy5" parent="." instance=ExtResource("2_kpn8q")]
+position = Vector2(242, 541)
+scale = Vector2(0.936844, 1)
+platform_floor_layers = 0
+
+[node name="Enemy2" parent="." instance=ExtResource("2_kpn8q")]
+position = Vector2(1049, 379)
+scale = Vector2(0.936844, 1)
+platform_floor_layers = 0
+
+[node name="Enemy3" parent="." instance=ExtResource("2_kpn8q")]
+position = Vector2(499, 103)
+scale = Vector2(0.936844, 1)
+platform_floor_layers = 0
+
+[node name="Enemy4" parent="." instance=ExtResource("2_kpn8q")]
+position = Vector2(167, 90)
+scale = Vector2(0.936844, 1)
+platform_floor_layers = 0
