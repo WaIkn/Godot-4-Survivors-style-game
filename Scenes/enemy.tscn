@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://buyricavq83bg"]
 
 [ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_d2eqd"]
-[ext_resource type="Texture2D" uid="uid://gfbnf2173o86" path="res://Enemy1.png" id="2_hmflr"]
+[ext_resource type="Texture2D" uid="uid://gfbnf2173o86" path="res://Sprites/Enemy1.png" id="2_hmflr"]
 [ext_resource type="PackedScene" uid="uid://b5lsi63pghug5" path="res://Scenes/health.tscn" id="3_mab3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldb7u"]
@@ -12,6 +12,7 @@ size = Vector2(14, 14)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
+platform_floor_layers = 0
 script = ExtResource("1_d2eqd")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -44,8 +45,16 @@ unique_name_in_owner = true
 [node name="StaggerImmunityTimer" type="Timer" parent="Timers"]
 unique_name_in_owner = true
 
+[node name="AttackSwingTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="BeamTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="zero_health" from="Health" to="." method="_on_health_zero_health"]
 [connection signal="timeout" from="Timers/AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]
 [connection signal="timeout" from="Timers/StaggerTimer" to="." method="_on_stagger_timer_timeout"]
 [connection signal="timeout" from="Timers/StaggerImmunityTimer" to="." method="_on_stagger_immunity_timer_timeout"]
+[connection signal="timeout" from="Timers/AttackSwingTimer" to="." method="_on_attack_swing_timer_timeout"]
+[connection signal="timeout" from="Timers/BeamTimer" to="." method="_on_beam_timer_timeout"]

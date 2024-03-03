@@ -15,8 +15,6 @@ size = Vector2(18, 32)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_mkiod")
-base_attack_speed = 5.0
-number_of_projectile = 3
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 scale = Vector2(1.25, 1.25)
@@ -52,4 +50,3 @@ offset_top = -37.0
 offset_bottom = -33.0
 
 [connection signal="timeout" from="Timers/AttackResetTimer" to="." method="_on_attack_reset_timer_timeout"]
-[connection signal="health_damaged" from="Health" to="." method="_on_health_health_damaged"]

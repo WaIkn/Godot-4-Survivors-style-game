@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b13wok5ky3gm"
-path="res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"
+uid="uid://ct8hik5g4rvqk"
+path="res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e2583ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerSprite.png"
-dest_files=["res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"]
+source_file="res://glowing_circle.png"
+dest_files=["res://.godot/imported/glowing_circle.png-81cb6beb0518ebd499cd00c85e2583ee.ctex"]
 
 [params]
 

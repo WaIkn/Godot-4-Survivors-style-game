@@ -6,6 +6,8 @@ class_name Health
 
 signal zero_health
 signal health_change
+signal health_damaged
+signal health_healed
 
 func _ready():
 	health = max_health
@@ -15,6 +17,7 @@ func _ready():
 func damage(amount):
 	health -= amount
 	health_change.emit()
+	health_damaged.emit()
 	if health <= 0:
 		zero_health.emit()
 

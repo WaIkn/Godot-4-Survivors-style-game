@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yhbkkxgcavn4"
-path="res://.godot/imported/Hitmarker.png-c50e84a94f0a57b56409c34d2601acbd.ctex"
+path="res://.godot/imported/Hitmarker.png-c215e46a34d02f136cfa575c46319ca1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hitmarker.png"
-dest_files=["res://.godot/imported/Hitmarker.png-c50e84a94f0a57b56409c34d2601acbd.ctex"]
+source_file="res://Sprites/Hitmarker.png"
+dest_files=["res://.godot/imported/Hitmarker.png-c215e46a34d02f136cfa575c46319ca1.ctex"]
 
 [params]
 

@@ -1,0 +1,102 @@
+[gd_scene load_steps=15 format=3 uid="uid://d3pm3opiu20ja"]
+
+[ext_resource type="Script" path="res://Beam.gd" id="1_1nner"]
+[ext_resource type="Texture2D" uid="uid://c1fl4fo50ebox" path="res://glowing_circle-white.png" id="2_5hjjy"]
+
+[sub_resource type="Curve" id="Curve_hpjbk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.673267, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.49945, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hs5vh"]
+curve = SubResource("Curve_hpjbk")
+
+[sub_resource type="Curve" id="Curve_36fr5"]
+max_value = 0.1
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.752475, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.0230769), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tgkmb"]
+curve = SubResource("Curve_36fr5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rlpb7"]
+particle_flag_disable_z = true
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_tgkmb")
+color = Color(0.960784, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_hs5vh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ylqm"]
+particle_flag_disable_z = true
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_tgkmb")
+color = Color(0.960784, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_hs5vh")
+
+[sub_resource type="Curve" id="Curve_il0xl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.905941, 0.483516), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kdw45"]
+curve = SubResource("Curve_il0xl")
+
+[sub_resource type="Curve" id="Curve_x7v1q"]
+max_value = 0.05
+_data = [Vector2(0, 0.05), 0.0, 0.0, 0, 0, Vector2(0.559406, 0.05), 0.0, 0.0, 0, 0, Vector2(1, 0.00879121), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ounpc"]
+curve = SubResource("Curve_x7v1q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gwfxa"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 0)
+gravity = Vector3(0, 98, 0)
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_curve = SubResource("CurveTexture_ounpc")
+color = Color(0.878431, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_kdw45")
+
+[sub_resource type="Environment" id="Environment_xuc43"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.5
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 2.0
+
+[node name="Beam" type="RayCast2D"]
+target_position = Vector2(139, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("1_1nner")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 60, 0)
+width = 0.0
+default_color = Color(0.960784, 0, 0, 1)
+
+[node name="FiringParticles" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_rlpb7")
+texture = ExtResource("2_5hjjy")
+lifetime = 0.3
+
+[node name="TargetParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_7ylqm")
+texture = ExtResource("2_5hjjy")
+lifetime = 0.3
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_gwfxa")
+texture = ExtResource("2_5hjjy")
+lifetime = 0.3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xuc43")

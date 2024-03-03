@@ -11,8 +11,7 @@ top_level = true
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_hs70t")
-damage = 10.0
-returning = true
+max_pierce = 4
 
 [node name="ProjectileSprite" type="Sprite2D" parent="."]
 rotation = 1.5708
