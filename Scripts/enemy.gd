@@ -5,10 +5,11 @@ class_name Enemy
 @onready var health_component := $Health as Health
 @onready var HITMARKER_SCENE = preload("res://hitmarker.tscn")
 @onready var BEAM_SCENE = preload("res://Beam.tscn")
+@onready var EXPERIENCE_SCENE = preload("res://experience_drop.tscn")
 
 @export var attack_damage := 10.0
 @export var attack_speed := .5
-@export var swing_time := .65
+@export var swing_time := .3
 @export var attack_range := 150.0
 @export var base_speed := 75
 
@@ -27,14 +28,14 @@ var _beam : Beam
 func _ready():
 	pass
 
-func _physics_process(delta):
-	if not staggered and not attacking and not player_in_attack_range():
+func _physics_process(_delta):
+	if not staggered and not attacking and not player_in_attack_range() and not player.is_dead:
 		velocity = (player.position - position).normalized() * base_speed
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
 	
-	if player_in_attack_range() and can_attack and not staggered:
+	if player_in_attack_range() and can_attack and not staggered and not player.is_dead:
 		attack()
 
 func attack():
@@ -53,7 +54,9 @@ func player_in_attack_range():
 	return player.global_position.distance_to(global_position) <= attack_range and attack_range > 0
 
 func on_death():
-	pass
+	var experience = EXPERIENCE_SCENE.instantiate()
+	experience.global_position = global_position
+	get_tree().root.call_deferred("add_child",experience)
 
 func stagger():
 	staggered = true
@@ -71,8 +74,8 @@ func _on_hit_box_area_entered(area):
 	add_child(hitmarker)
 
 func _on_health_zero_health():
-	dead()
 	on_death()
+	dead()
 
 func _on_attack_reset_timer_timeout():
 	can_attack = true

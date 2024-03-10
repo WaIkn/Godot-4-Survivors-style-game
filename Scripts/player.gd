@@ -3,20 +3,32 @@ class_name Player
 
 @export_group("Movement")
 @export var speed := 150.0
+@export var max_dash_range := 300.0
+@export var min_dash_range := 50.0
+@export var dash_cooldown := 5.0
 
 @export_group("Weapon")
 @export var base_attack_speed := 10.0
 @export var number_of_projectile := 1
 @export var projectile_spawn_distance := 20.0
 
+@onready var experience_component = $ExperienceComponent as ExperienceComponent
+
 var can_attack := true
+var can_dash := true
+var is_dead := false
 
 var PROJECTILE_SCENE = preload("res://Scenes/projectile.tscn")
 @onready var health_component := $Health as Health
 
 func  _physics_process(_delta):
+	if is_dead:
+		return
+	if Input.is_action_pressed("dash") and can_dash:
+		dash()
 	var direction = get_direction()
-
+	
+	sprite_update()
 	rotate_projectile_spawn_point()
 	if Input.is_action_pressed("basic attack") and can_attack:
 		basic_attack()
@@ -56,3 +68,51 @@ func _on_health_health_damaged():
 	var tween := create_tween()
 	tween.tween_property($PlayerSprite,"self_modulate",Color.CRIMSON,.1)
 	tween.tween_property($PlayerSprite,"self_modulate",Color.WHITE,.05)
+
+
+func _on_health_zero_health():
+	velocity = Vector2.ZERO
+	is_dead = true
+	health_component.visible = false
+	create_tween().tween_property(self, "modulate:a", 0, 1.5)
+
+func sprite_update():
+	if get_local_mouse_position().x >= 0:
+		$PlayerSprite.flip_h = false
+	else:
+		$PlayerSprite.flip_h = true
+
+
+func dash():
+	var end_position := get_local_mouse_position()
+	can_dash = false
+	%DashResetTimer.start(dash_cooldown)
+	%DashResetEffectTimer.start(dash_cooldown*.9)
+	if end_position.length() > max_dash_range or end_position.length() < min_dash_range:
+		end_position = end_position.normalized()* clampf(end_position.length(),min_dash_range,max_dash_range)
+	create_tween().tween_property(self,"position",position + end_position,.2)
+
+
+func _on_dash_reset_timer_timeout():
+	
+	can_dash = true
+
+
+
+
+
+func _on_dash_reset_effect_timer_timeout():
+	%DashResetEffect.emitting = true
+
+
+func _on_hit_box_area_entered(area):
+	if area.get_parent() is ExperienceDrop:
+		area.get_parent().pick_up()
+		experience_component.add_xp(1)
+
+
+func _on_experience_component_level_up():
+	health_component.heal_full()
+	number_of_projectile += 2
+	speed += 10
+	%SuckInArea.get_child(0).shape.radius += 20

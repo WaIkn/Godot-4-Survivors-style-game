@@ -32,3 +32,7 @@ func set_health_bar_visible(_visible : bool):
 
 func _on_health_change():
 	value = health
+
+func heal_full():
+	health = max_health
+	health_change.emit()

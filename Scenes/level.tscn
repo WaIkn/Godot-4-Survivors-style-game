@@ -27,5 +27,9 @@ editor_draw_screen = false
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+autostart = true
 
+[connection signal="zero_health" from="Player/Health" to="." method="_on_health_zero_health"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+
+[editable path="Player"]

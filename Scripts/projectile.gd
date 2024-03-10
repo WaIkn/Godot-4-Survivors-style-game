@@ -88,6 +88,7 @@ func dead():
 static func get_position_offsets(pivot: Node2D, distance: float, number_of_projectile: int, angle: float = 12.0):
 	var offsets: Array = [Vector2(cos(pivot.rotation),sin(pivot.rotation)) * distance]
 
+	@warning_ignore("unassigned_variable")
 	var current_offset: Vector2
 	var i = 1
 	
