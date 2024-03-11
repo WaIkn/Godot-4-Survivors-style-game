@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6jld4cqh4683"]
 
-[ext_resource type="Script" path="res://ExperienceBar.gd" id="1_u06ar"]
+[ext_resource type="Script" path="res://Scripts/ExperienceBar.gd" id="1_uwrks"]
 
 [sub_resource type="Theme" id="Theme_cnn3h"]
 default_font_size = 10
@@ -13,4 +13,4 @@ offset_right = 54.0
 offset_bottom = 9.0
 theme = SubResource("Theme_cnn3h")
 show_percentage = false
-script = ExtResource("1_u06ar")
+script = ExtResource("1_uwrks")

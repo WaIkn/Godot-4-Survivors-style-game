@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bancge8r344x1"
-path="res://.godot/imported/DiskLowFade.png-ee6e3fcb98dad14bccbc6ff8ebf1f0ec.ctex"
+uid="uid://ct8hik5g4rvqk"
+path="res://.godot/imported/glowing_circle.png-75897cdbbc43d0e165348326f247e19b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DiskLowFade.png"
-dest_files=["res://.godot/imported/DiskLowFade.png-ee6e3fcb98dad14bccbc6ff8ebf1f0ec.ctex"]
+source_file="res://Sprites/glowing_circle.png"
+dest_files=["res://.godot/imported/glowing_circle.png-75897cdbbc43d0e165348326f247e19b.ctex"]
 
 [params]
 

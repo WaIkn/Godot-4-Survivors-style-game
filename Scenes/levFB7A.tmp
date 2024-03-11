@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://o7ij22ogxdi8"]
+
+[ext_resource type="PackedScene" uid="uid://3suho3whovo4" path="res://Scenes/player.tscn" id="1_bbule"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="1_v2ybe"]
+[ext_resource type="Texture2D" uid="uid://bihm1rhtsov11" path="res://TestGridTexture.jpg" id="3_lp0rv"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_v2ybe")
+
+[node name="TestGridTexture" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(378, 188)
+scale = Vector2(5, 5)
+texture = ExtResource("3_lp0rv")
+
+[node name="Player" parent="." instance=ExtResource("1_bbule")]
+platform_floor_layers = 0
+
+[node name="MainCamera" type="Camera2D" parent="Player"]
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_screen = false
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="zero_health" from="Player/Health" to="." method="_on_health_zero_health"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+
+[editable path="Player"]

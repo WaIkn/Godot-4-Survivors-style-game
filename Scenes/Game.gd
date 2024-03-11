@@ -8,7 +8,7 @@ extends Node
 @onready var ENEMY_SCENE := preload("res://Scenes/enemy.tscn")
 @onready var enemies := get_node("Enemies")
 @onready var player = get_node("Player") as Player
-@onready var DEAD_UI_SCENE := preload("res://dead_ui.tscn")
+@onready var DEAD_UI_SCENE := preload("res://Scenes/dead_ui.tscn")
 
 var dead_ui : DeadUI
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clf3tah7efpx2"
-path="res://.godot/imported/Laser.png-15ec2f561ec2bf2e98c2832ca0f516ff.ctex"
+uid="uid://c1fl4fo50ebox"
+path="res://.godot/imported/glowing_circle-white.png-4cc53ea0ffd82779603f4dbfdc317bb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Laser.png"
-dest_files=["res://.godot/imported/Laser.png-15ec2f561ec2bf2e98c2832ca0f516ff.ctex"]
+source_file="res://Sprites/glowing_circle-white.png"
+dest_files=["res://.godot/imported/glowing_circle-white.png-4cc53ea0ffd82779603f4dbfdc317bb9.ctex"]
 
 [params]
 

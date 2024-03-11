@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://3suho3whovo4"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_mkiod"]
-[ext_resource type="Texture2D" uid="uid://c1fl4fo50ebox" path="res://glowing_circle-white.png" id="2_0ahnr"]
+[ext_resource type="Texture2D" uid="uid://c1fl4fo50ebox" path="res://Sprites/glowing_circle-white.png" id="2_0ahnr"]
 [ext_resource type="Texture2D" uid="uid://b13wok5ky3gm" path="res://Sprites/PlayerSprite.png" id="2_s63ws"]
 [ext_resource type="Script" path="res://Scenes/PlayerSprite.gd" id="3_6vbpv"]
 [ext_resource type="PackedScene" uid="uid://b5lsi63pghug5" path="res://Scenes/health.tscn" id="3_kptju"]
-[ext_resource type="PackedScene" uid="uid://ddo0we58dqh6v" path="res://experience_component.tscn" id="6_mworw"]
-[ext_resource type="PackedScene" uid="uid://6jld4cqh4683" path="res://experience_bar.tscn" id="7_vj5b7"]
+[ext_resource type="PackedScene" uid="uid://ddo0we58dqh6v" path="res://Scenes/experience_component.tscn" id="6_y0e3l"]
+[ext_resource type="PackedScene" uid="uid://6jld4cqh4683" path="res://Scenes/experience_bar.tscn" id="7_81y26"]
 
 [sub_resource type="Curve" id="Curve_xxgxj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.699588, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -113,9 +113,9 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_dh36v")
 debug_color = Color(0.262745, 0.501961, 1, 0.419608)
 
-[node name="ExperienceComponent" parent="." instance=ExtResource("6_mworw")]
+[node name="ExperienceComponent" parent="." instance=ExtResource("6_y0e3l")]
 
-[node name="ExperienceBar" parent="." instance=ExtResource("7_vj5b7")]
+[node name="ExperienceBar" parent="." instance=ExtResource("7_81y26")]
 offset_left = -27.0
 offset_top = -32.0
 offset_right = 81.0

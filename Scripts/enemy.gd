@@ -3,9 +3,9 @@ class_name Enemy
 
 @onready var player = get_node("../../Player") as Player
 @onready var health_component := $Health as Health
-@onready var HITMARKER_SCENE = preload("res://hitmarker.tscn")
-@onready var BEAM_SCENE = preload("res://Beam.tscn")
-@onready var EXPERIENCE_SCENE = preload("res://experience_drop.tscn")
+@onready var HITMARKER_SCENE = preload("res://Scenes/hitmarker.tscn")
+@onready var BEAM_SCENE = preload("res://Scenes/Beam.tscn")
+@onready var EXPERIENCE_SCENE = preload("res://Scenes/experience_drop.tscn")
 
 @export var attack_damage := 10.0
 @export var attack_speed := .5

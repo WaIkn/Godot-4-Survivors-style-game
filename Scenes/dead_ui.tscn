@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cagosc3cxi418"]
 
-[ext_resource type="Script" path="res://DeadUI.gd" id="1_iu3gm"]
+[ext_resource type="Script" path="res://Scripts/DeadUI.gd" id="1_iu3gm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uxwau"]
 font_size = 64

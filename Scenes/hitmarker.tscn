@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu415p6320qq"]
 
 [ext_resource type="Texture2D" uid="uid://yhbkkxgcavn4" path="res://Sprites/Hitmarker.png" id="1_e3wnx"]
-[ext_resource type="Script" path="res://Hitmarker.gd" id="2_sk6ku"]
+[ext_resource type="Script" path="res://Scripts/Hitmarker.gd" id="2_sk6ku"]
 
 [node name="Hitmarker" type="Sprite2D"]
 top_level = true
